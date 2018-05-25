@@ -3,7 +3,12 @@ package com.example.yon_pc.recupmm;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import java.util.ArrayList;
+
 public class Formulario extends AppCompatActivity {
+
+    public ArrayList<Viajes> accesorios = new ArrayList<Viajes>();
+    private Viajes[] listado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
