@@ -6,13 +6,12 @@ package com.example.yon_pc.recupmm;
 
 public class Viajes {
 
-    String origen, destino, clase;
+    String origen, destino;
     Double precio;
 
-    public Viajes(String org, String des, String clas, Double pre) {
+    public Viajes(String org, String des, Double pre) {
         this.origen = org;
         this.destino = des;
-        this.clase = clas;
         this.precio = pre;
     }
 
@@ -32,14 +31,6 @@ public class Viajes {
         this.destino = destino;
     }
 
-    public String getClase() {
-        return clase;
-    }
-
-    public void setClase(String clase) {
-        this.clase = clase;
-    }
-
     public Double getPrecio() {
         return precio;
     }
@@ -53,7 +44,6 @@ public class Viajes {
         return "Viajes{" +
                 "origen='" + origen + '\'' +
                 ", destino='" + destino + '\'' +
-                ", clase='" + clase + '\'' +
                 ", precio=" + precio +
                 '}';
     }

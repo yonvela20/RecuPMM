@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DataBaseHelper extends SQLiteOpenHelper{
 
     String usuarios = "CREATE TABLE Usuarios (id INTEGER PRIMARY KEY AUTOINCREMENT,usuario TEXT, password TEXT)";
-    String viajes = "CREATE TABLE Viajes (Origen TEXT, Destino TEXT, Clase TEXT, Precio DOUBLE)";
+    String viajes = "CREATE TABLE Viajes (Origen TEXT, Destino TEXT, Precio DOUBLE)";
     String billetes = "CREATE TABLE Billetes (usuarios TEXT, Origen TEXT, Destino TEXT, Clase TEXT, Precio DOUBLE, Extras TEXT, " +
             "FOREIGN KEY (usuarios) REFERENCES Usuarios (id))";
 
