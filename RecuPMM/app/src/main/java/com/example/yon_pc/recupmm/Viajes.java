@@ -1,10 +1,12 @@
 package com.example.yon_pc.recupmm;
 
+import java.io.Serializable;
+
 /**
  * Created by Yon-PC on 25/05/2018.
  */
 
-public class Viajes {
+public class Viajes implements Serializable {
 
     String origen, destino;
     Double precio;

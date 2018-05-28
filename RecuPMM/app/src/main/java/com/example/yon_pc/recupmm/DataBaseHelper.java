@@ -12,7 +12,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 
     String usuarios = "CREATE TABLE Usuarios (id INTEGER PRIMARY KEY AUTOINCREMENT,usuario TEXT, password TEXT)";
     String viajes = "CREATE TABLE Viajes (Origen TEXT, Destino TEXT, Precio DOUBLE)";
-    String billetes = "CREATE TABLE Billetes (usuarios TEXT, Origen TEXT, Destino TEXT, Clase TEXT, Precio DOUBLE, Extras TEXT, " +
+    String billetes = "CREATE TABLE Billetes (usuarios TEXT, Origen TEXT, Destino TEXT, Precio DOUBLE, Clase TEXT, Extras TEXT, " +
             "FOREIGN KEY (usuarios) REFERENCES Usuarios (id))";
 
 

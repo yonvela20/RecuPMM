@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,7 +23,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class Formulario extends AppCompatActivity {
+public class Formulario extends AppCompatActivity implements FragmentDetalles.OnFragmentInteractionListener {
 
     public ArrayList<Viajes> accesorios = new ArrayList<Viajes>();
     private Viajes[] listado;
@@ -131,8 +132,28 @@ public class Formulario extends AppCompatActivity {
 
                 String user = getIntent().getStringExtra("usuario");
                 objetos.putSerializable("usuario", user);
+
+                //Fragment
+                FragmentManager fragmentmanager = getFragmentManager();
+                FragmentTransaction transaction = fragmentmanager.beginTransaction();
+
+                //Creamos un nuevo fragment y lo añadimos
+                FragmentDetalles fragment = new FragmentDetalles();
+                fragment.setArguments(objetos);
+
+                //por qué dice que no puede detectar el método add?
+                transaction.add(R.id.activity_formulario, fragment);
+
+                //lo confirmamos
+                transaction.commit();
             }
         });
+    }
+
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 
     public class AdaptadorViajes extends ArrayAdapter {
