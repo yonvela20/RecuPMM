@@ -1,11 +1,13 @@
 package com.example.yon_pc.recupmm;
 
+
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -24,8 +26,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class Formulario extends AppCompatActivity implements FragmentDetalles.OnFragmentInteractionListener {
-
-    public ArrayList<Viajes> accesorios = new ArrayList<Viajes>();
+    public ArrayList<Viajes> viajes = new ArrayList<Viajes>();
     private Viajes[] listado;
 
     @Override
@@ -134,18 +135,21 @@ public class Formulario extends AppCompatActivity implements FragmentDetalles.On
                 objetos.putSerializable("usuario", user);
 
                 //Fragment
-                FragmentManager fragmentmanager = getFragmentManager();
-                FragmentTransaction transaction = fragmentmanager.beginTransaction();
+
+                //FragmentManager fragmentmanager = getFragmentManager();
+                android.support.v4.app.FragmentManager fragmentmanager = getSupportFragmentManager();
+
+                //android.support.v4.app.FragmentTransaction transaction = fragmentmanager.beginTransaction();
 
                 //Creamos un nuevo fragment y lo añadimos
-                FragmentDetalles fragment = new FragmentDetalles();
+                Fragment fragment = new FragmentDetalles();
                 fragment.setArguments(objetos);
 
-                //por qué dice que no puede detectar el método add?
-                transaction.add(R.id.activity_formulario, fragment);
+                //transaction.add(R.id.activity_formulario, fragment);
+                fragmentmanager.beginTransaction().replace(R.id.activity_formulario, fragment).commit();
 
                 //lo confirmamos
-                transaction.commit();
+                //transaction.commit();
             }
         });
     }

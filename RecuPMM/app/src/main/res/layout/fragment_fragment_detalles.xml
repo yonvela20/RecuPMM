@@ -8,7 +8,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="232dp"
-        android:backgroundTint="@color/white"
+        android:background="@color/white"
         android:layout_alignBottom="@+id/linearLayout" />
 
     <LinearLayout
