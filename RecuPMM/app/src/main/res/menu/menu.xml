@@ -4,8 +4,4 @@
         android:id="@+id/AcercaDe"
         android:orderInCategory="100"
         android:title="Acerca de"/>
-    <item
-        android:id="@+id/Dibujo"
-        android:orderInCategory="100"
-        android:title="Dibujo" />
 </menu>

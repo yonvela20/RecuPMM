@@ -4,6 +4,7 @@ package com.example.yon_pc.recupmm;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
@@ -11,6 +12,8 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -158,6 +161,25 @@ public class Formulario extends AppCompatActivity implements FragmentDetalles.On
     @Override
     public void onFragmentInteraction(Uri uri) {
 
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.AcercaDe:
+                Intent acercaDe = new Intent(Formulario.this, AcercaDe.class);
+                startActivity(acercaDe);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     public class AdaptadorViajes extends ArrayAdapter {
