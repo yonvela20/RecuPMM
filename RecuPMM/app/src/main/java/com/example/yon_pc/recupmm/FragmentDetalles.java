@@ -2,6 +2,7 @@ package com.example.yon_pc.recupmm;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
@@ -115,8 +116,10 @@ public class FragmentDetalles extends Fragment {
                         e.getMessage();
                     }
                 }
+
+                Intent factura = new Intent(FragmentDetalles.this.getActivity(), Factura.class);
+                startActivity(factura);
             }
-            //TODO: Que una vez aceptado me salga una lista con todos los pedidos de este usuario
         });
 
         //boton cancelar
