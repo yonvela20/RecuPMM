@@ -24,6 +24,13 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         bd.execSQL(usuarios);
         bd.execSQL(viajes);
         bd.execSQL(billetes);
+
+
+        bd.execSQL("INSERT INTO Viajes (Origen, Destino, Precio) VALUES ('Valencia','Amsterdam','220')");
+        bd.execSQL("INSERT INTO Viajes (Origen, Destino, Precio) VALUES ('Barcelona','Berlin','175')");
+        bd.execSQL("INSERT INTO Viajes (Origen, Destino, Precio) VALUES ('Castellon','Paris','260')");
+        bd.execSQL("INSERT INTO Viajes (Origen, Destino, Precio) VALUES ('Madrid','Praga','330')");
+        bd.execSQL("INSERT INTO Viajes (Origen, Destino, Precio) VALUES ('Alicante','Polonia','140')");
     }
 
     @Override

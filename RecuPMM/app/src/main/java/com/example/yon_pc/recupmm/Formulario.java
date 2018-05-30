@@ -42,12 +42,6 @@ public class Formulario extends AppCompatActivity implements FragmentDetalles.On
         DataBaseHelper DbHelper = new DataBaseHelper(this, "Usuarios", null, 1);
         final SQLiteDatabase bd = DbHelper.getWritableDatabase();
 
-        bd.execSQL("INSERT INTO Viajes (Origen, Destino, Precio) VALUES ('Valencia','Amsterdam','220')");
-        bd.execSQL("INSERT INTO Viajes (Origen, Destino, Precio) VALUES ('Barcelona','Berlin','175')");
-        bd.execSQL("INSERT INTO Viajes (Origen, Destino, Precio) VALUES ('Castellon','Paris','260')");
-        bd.execSQL("INSERT INTO Viajes (Origen, Destino, Precio) VALUES ('Madrid','Praga','330')");
-        bd.execSQL("INSERT INTO Viajes (Origen, Destino, Precio) VALUES ('Alicante','Polonia','140')");
-
         String[] campos = new String[]{"Origen", "Destino", "Precio"};
         Cursor c = bd.query("Viajes", campos, null, null, null, null, null);
         listado = new Viajes[c.getCount()];
