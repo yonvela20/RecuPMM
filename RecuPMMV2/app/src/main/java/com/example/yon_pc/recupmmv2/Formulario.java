@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -18,19 +20,20 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 public class Formulario extends AppCompatActivity {
+    //Actividad donde hacer las inserciones de datos
 
     SQLiteDatabase sqLiteDatabase ;
     private Spinner spinnerViaje;
     private Viajes[] viajes;
     String[] columnas = new String[] {"id","Origen","Destino","Precio"};
     int contador = 0;
-    //ImageView img ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario);
 
+        //Declaración de widgets
         final Button buttonCompra = findViewById(R.id.buttonCompra);
         final RadioButton rbTurista = findViewById(R.id.claseTurista);
         final RadioButton rbVip = findViewById(R.id.claseVip);
@@ -47,10 +50,8 @@ public class Formulario extends AppCompatActivity {
 
         viajes = new Viajes[c.getCount()];
 
+        //contador para saber el número del viaje seleccionado y utilizarlo más abajo
         int i = 0;
-        int a = c.getCount();
-
-        System.out.println(a);
 
         if (c.moveToFirst()){
             do {
@@ -64,9 +65,12 @@ public class Formulario extends AppCompatActivity {
                 i++;
             }while(c.moveToNext());
         }
+
+        //spinner donde están los viajes
         ViajesArrayAdapter viajesArrayAdapter = new ViajesArrayAdapter(this,viajes);
         spinnerViaje.setAdapter(viajesArrayAdapter);
 
+        //toast con los detalles del vuelo seleccionado
         spinnerViaje.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView arg0, View arg1, int position, long id) {
@@ -80,7 +84,7 @@ public class Formulario extends AppCompatActivity {
             }
         });
 
-        //Esto será el fragment
+        //a partir de esto intentaré hacer el fragment, es de la version 1 de la app.
         /*
         buttonCompra.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,24 +151,29 @@ public class Formulario extends AppCompatActivity {
         });
         */
 
+        //Configuración del boton al comprar
         buttonCompra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
 
                 String cantidad = tvCantidad.getText().toString();
                 float canti = Float.parseFloat(cantidad);
                 int pos = spinnerViaje.getSelectedItemPosition();
                 int cantida = (int)canti;
 
-                int cont =0;
-
+                //cogemos el id del viaje y su respectivo preccio y lo multiplicamos por la cantidad
                 float precio = viajes[pos].getPrecio()*canti;
 
+                //variable para los extras
                 float a= añadido(precio);
+
+                //variable para la clase
                 float b = clase(a);
+
+                //el total
                 float total = b;
 
+                //Variables con los valores de las columnas
                 int resultado = (int) total;
                 String extras = extras();
                 String clase = clase();
@@ -183,11 +192,11 @@ public class Formulario extends AppCompatActivity {
                 extra = " ";
                 Intent miIntent = new Intent(Formulario.this, Factura.class);
 
-
                 startActivity(miIntent);
 
             }
 
+            //metodos con los extras, solo suma 1 por el momento por cada extra
             public float añadido(float cont) {
                 if (chSouvenir.isChecked() && contador % 2 != 0)
                     cont++;
@@ -201,10 +210,11 @@ public class Formulario extends AppCompatActivity {
                 return cont;
             }
 
+            //metodo qeu te duplica el precio si pides VIP
             public float clase(float precio) {
                 float total = 0;
                 if (rbVip.isChecked() && contador % 2 != 0){
-                    total = (float) (precio + precio * 0.1);
+                    total = (float) (precio + precio * 2);
                     return total;}
                 else
                     contador++;
@@ -213,11 +223,14 @@ public class Formulario extends AppCompatActivity {
 
             }
 
+            /*
             public float cantidad(float numero, float precio) {
                 float total = numero * precio;
                 return total;
             }
+            */
 
+            //Metodo para que te saque que clase elegiste en forma de String
             public String clase() {
                 String x = "";
                 if (rbVip.isChecked() && contador % 2 != 0) {
@@ -233,6 +246,7 @@ public class Formulario extends AppCompatActivity {
             }
             String extra = " ";
 
+            //Lo mismo que el de clase pero con los extras
             public String extras() {
                 if (chMenu.isChecked() ) {
                     extra = extra + "Menu en el avion ";
@@ -248,9 +262,34 @@ public class Formulario extends AppCompatActivity {
                 }else {
 
                 }
-
                 return extra;
             }
         });
     }
+
+    //Menu normal y corriente
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    //Opciones del menu que van o al acercaDe o a la actividad Factura donde veremos los registros
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.AcercaDe:
+                Intent acercaDe = new Intent(Formulario.this, AcercaDe.class);
+                startActivity(acercaDe);
+                return true;
+            case R.id.Billetes:
+                Intent billetes = new Intent(Formulario.this,Factura.class);
+                startActivity(billetes);
+                return  true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
 }

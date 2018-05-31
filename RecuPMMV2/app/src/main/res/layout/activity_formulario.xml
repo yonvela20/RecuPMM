@@ -83,7 +83,6 @@
         android:layout_below="@+id/menu"
         android:hint="Cuantos Billetes quieres" />
 
-    <!--
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
@@ -92,6 +91,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="32dp"
         android:src="@drawable/logoagencia" />
-        -->
+
 
 </RelativeLayout>

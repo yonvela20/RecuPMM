@@ -8,11 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    //declaracion de los widgets
     EditText usuarioCorrecto, contraseñaCorrecta;
     Cursor cursor;
     Button buttonLogin, buttonRegistro;
@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         buttonLogin = findViewById(R.id.Entrar);
         buttonRegistro = findViewById(R.id.buttonRegistro);
 
+        //metodo para entrar a la app que llama a ingresar()
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Con este boton vamos a la actividad Registro para crear nuestro usuario
         buttonRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //Con este metodo entramos a la actividad Formulario en el caso de tener un usuario existente
     public void ingresar() {
         DataBaseHelper DbHelper = new DataBaseHelper(MainActivity.this, "DB", null, 1);
         SQLiteDatabase sqLiteDatabase = DbHelper.getWritableDatabase();
@@ -52,13 +55,10 @@ public class MainActivity extends AppCompatActivity {
         String pass = contraseñaCorrecta.getText().toString();
         cursor = sqLiteDatabase.rawQuery("select usuario,password from Usuarios where usuario = '" + users + "' and password = '" + pass + "'", null);
 
-
-
         if (cursor.moveToFirst() == true) {
 
             String user = cursor.getString(0);
             String password = cursor.getString(1);
-
 
             if (users.equals(user) && pass.equals(password)) {
                 Intent ven = new Intent(MainActivity.this, Formulario.class);
@@ -78,7 +78,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
-
 }
 

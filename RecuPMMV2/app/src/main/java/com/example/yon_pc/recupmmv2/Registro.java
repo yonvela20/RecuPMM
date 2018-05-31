@@ -10,6 +10,7 @@ import android.widget.EditText;
 
 public class Registro extends AppCompatActivity {
 
+    //Declaracion de widgets
     EditText registroContraseña, registroUsuario;
     Button buttonVolver,buttonRegistro;
 
@@ -23,6 +24,7 @@ public class Registro extends AppCompatActivity {
         buttonVolver = findViewById(R.id.volverLogin);
         buttonRegistro = findViewById(R.id.registro);
 
+        //Recogemos los datos puestos en los editText y los insertamos en la tabla Usarios
         buttonRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -36,11 +38,13 @@ public class Registro extends AppCompatActivity {
                 sqLiteDatabase.execSQL("INSERT INTO Usuarios (usuario,password) VALUES('"+users+"','"+pass+"')");
                 sqLiteDatabase.close();
 
+                //Una vez creado nos lleva de vuelta la actividad para logearnos
                 Intent intent = new Intent(Registro.this,MainActivity.class);
                 startActivity(intent);
             }
         });
 
+        //Volvemos a la actividad anterior
         buttonVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,6 +53,7 @@ public class Registro extends AppCompatActivity {
         });
     }
 
+    //Metodo para que esté más ordenado el boton para volver
     public  void  volver(View view){
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);

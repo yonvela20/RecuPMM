@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.yon_pc.recupmmv2.Factura">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/tareas"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:gravity="center"
+        android:text="Billetes por recoger"
+        android:textSize="22dp"
+        android:typeface="serif" />
+
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="wrap_content"
+        android:layout_height="874dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tareas"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="90dp">
+    </ListView>
+
+</RelativeLayout>

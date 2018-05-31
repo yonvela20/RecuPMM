@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">RecuPMMV2</string>
+    <string name="alertDelete">Eliminar registro</string>
+    <string name="alertDeleteEntry">¿Quiere eliminar el registro seleccionado?</string>
+    <string name="errorMessage">Error al obtener los datos</string>
+
 </resources>

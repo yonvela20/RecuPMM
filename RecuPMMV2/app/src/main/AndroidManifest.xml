@@ -17,8 +17,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".Registro" />
-        <activity android:name=".Formulario" />
-        <activity android:name=".Factura"></activity>
+        <activity android:name=".Formulario"
+            android:theme="@style/Base.Theme.AppCompat.Light.DarkActionBar"/>
+        <activity android:name=".Factura" />
+        <activity android:name=".AcercaDe"></activity>
     </application>
 
 </manifest>

@@ -4,6 +4,7 @@ package com.example.yon_pc.recupmmv2;
  * Created by Yon-PC on 30/05/2018.
  */
 
+//Constructor de los viajes
 public class Viajes {
 
     private String Origen, Destino;

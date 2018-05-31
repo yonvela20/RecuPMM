@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/rowExtras"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentRight="true" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/rowCantidad"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center_vertical" />
+
+    <TextView
+        android:id="@+id/rowClase"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/rowOrigen"
+        android:layout_marginTop="17dp"
+        android:gravity="right" />
+
+    <TextView
+        android:id="@+id/rowOrigen"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/rowExtras"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:gravity="right" />
+
+    <TextView
+        android:id="@+id/rowDestino"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/rowCantidad"
+        android:layout_toRightOf="@+id/rowCantidad"
+        android:gravity="right" />
+
+    <TextView
+        android:id="@+id/rowPrecio"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rowOrigen"
+        android:layout_toEndOf="@+id/rowCantidad"
+        android:layout_toRightOf="@+id/rowCantidad"
+        android:gravity="right" />
+
+    <TextView
+        android:id="@+id/rowCliente"
+        android:layout_width="130dp"
+        android:layout_height="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/rowDestino"
+        android:layout_toRightOf="@+id/rowDestino"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/rowEstado"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/rowPrecio"
+        android:layout_alignBottom="@+id/rowPrecio"
+        android:layout_alignEnd="@+id/rowCliente"
+        android:layout_alignRight="@+id/rowCliente"
+        android:layout_marginEnd="13dp"
+        android:layout_marginRight="13dp" />
+
+</RelativeLayout>

@@ -11,6 +11,7 @@ import android.widget.TextView;
  * Created by Yon-PC on 30/05/2018.
  */
 
+//Adaptador para el spinner con los viajes
 public class ViajesArrayAdapter extends ArrayAdapter<Viajes> {
     Context context;
     Viajes[] viajes;
@@ -23,6 +24,7 @@ public class ViajesArrayAdapter extends ArrayAdapter<Viajes> {
         this.viajes= viajes ;
     }
 
+    //Rellenamos el spinner con los datos correspondientes. Más bien los widgets del spinner.
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
@@ -35,9 +37,9 @@ public class ViajesArrayAdapter extends ArrayAdapter<Viajes> {
         tvDestino =  view.findViewById(R.id.destino);
 
         String cast = Float.toString(viajes[position].getPrecio());
-
         String cast2 = Integer.toString(viajes[position].getId());
 
+        tvId.setText(cast2);
         tvPrecio.setText(cast);
         tvOrigen.setText(viajes[position].getOrigen());
         tvDestino.setText(viajes[position].getDestino());
