@@ -162,10 +162,12 @@ public class Formulario extends AppCompatActivity {
                 int cantida = (int)canti;
 
                 //cogemos el id del viaje y su respectivo preccio y lo multiplicamos por la cantidad
-                float precio = viajes[pos].getPrecio()*canti;
+                //float precio = viajes[pos].getPrecio()*canti;
+                float precio = viajes[pos].getPrecio()*canti + contador;
+
 
                 //variable para los extras
-                float a= añadido(precio);
+                float a = añadido(precio);
 
                 //variable para la clase
                 float b = clase(a);
@@ -183,7 +185,7 @@ public class Formulario extends AppCompatActivity {
 
                 Bundle mibundle = getIntent().getExtras();
 
-                String cliente = mibundle.getString("cliente");
+                String cliente = mibundle.getString("usuario");
 
                 String recibido = "A recoger en el aeropuerto";
 
@@ -196,71 +198,53 @@ public class Formulario extends AppCompatActivity {
 
             }
 
-            //metodos con los extras, solo suma 1 por el momento por cada extra
+            //metodos con los extras
             public float añadido(float cont) {
-                if (chSouvenir.isChecked() && contador % 2 != 0)
-                    cont++;
-                if (chMenu.isChecked() && contador % 2 != 0)
-                    cont++;
-                if (chPreferente.isChecked() && contador % 2 != 0)
-                    cont++;
+                if (chSouvenir.isChecked())
+                    cont += 10;
+                if (chMenu.isChecked())
+                    cont += 15;
+                if (chPreferente.isChecked())
+                    cont += 25;
                 else
-                    cont++;
-
+                    cont = cont;
                 return cont;
             }
 
-            //metodo qeu te duplica el precio si pides VIP
             public float clase(float precio) {
-                float total = 0;
-                if (rbVip.isChecked() && contador % 2 != 0){
-                    total = (float) (precio + precio * 2);
-                    return total;}
-                else
-                    contador++;
+                float total;
+                if (rbVip.isChecked()) {
+                    total = (precio*2);
+                    return total;
+                } else
+                    contador = contador;
 
                 return precio;
-
             }
 
-            /*
-            public float cantidad(float numero, float precio) {
-                float total = numero * precio;
-                return total;
-            }
-            */
-
-            //Metodo para que te saque que clase elegiste en forma de String
             public String clase() {
                 String x = "";
-                if (rbVip.isChecked() && contador % 2 != 0) {
+                if (rbVip.isChecked()) {
                     x = "Clase VIP";
-                    contador++;
-                } else if (rbTurista.isChecked() && contador %2 == 0) {
-                    x = "clase Turista";
-                    contador++;
-                }else
-                    contador++;
+                } else {
+                    x = "Clase Turista";
+                }
                 return x;
-
             }
+            
             String extra = " ";
 
             //Lo mismo que el de clase pero con los extras
             public String extras() {
                 if (chMenu.isChecked() ) {
                     extra = extra + "Menu en el avion ";
-
                 }
                 if (chPreferente.isChecked()) {
                     extra = extra + "Entrada preferente ";
-
                 }
                 if (chSouvenir.isChecked() ) {
                     extra = extra + "souvenir de la agencia ";
-
                 }else {
-
                 }
                 return extra;
             }

@@ -138,6 +138,7 @@ public class Factura extends ListActivity {
                         android.R.string.ok, new AlertDialog.OnClickListener() {
                             public void onClick(DialogInterface dlg, int i) {
                                 deleteEntry();
+                                Toast.makeText(getApplicationContext(),"entrada borrada",Toast.LENGTH_SHORT).show();
                             }
                         }).setNegativeButton(android.R.string.cancel, null).show();
                 return true;
@@ -151,7 +152,7 @@ public class Factura extends ListActivity {
         DataBaseHelper dataBaseHelper = new DataBaseHelper(this, "DB", null, 1);
         SQLiteDatabase sqLiteDatabase = dataBaseHelper.getWritableDatabase();
 
-        String[] sqlString = new String[]{Integer.toString(((infoBilletes)getListAdapter().getItem(mLastRowSelected)).id_billete)};
+        String[] sqlString = new String[]{Integer.toString(((infoBilletes)getListAdapter().getItem(mLastRowSelected)).id)};
         sqLiteDatabase.delete("Billetes","id = ?",sqlString);
         fillData();
 

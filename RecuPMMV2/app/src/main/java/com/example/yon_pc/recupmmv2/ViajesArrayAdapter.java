@@ -32,6 +32,8 @@ public class ViajesArrayAdapter extends ArrayAdapter<Viajes> {
         if (view == null){
             view = inflater.inflate(R.layout.spinner_helper,null);
         }
+
+        tvId = view.findViewById(R.id.id);
         tvPrecio = view.findViewById(R.id.precio);
         tvOrigen =  view.findViewById(R.id.origen);
         tvDestino =  view.findViewById(R.id.destino);
@@ -39,7 +41,7 @@ public class ViajesArrayAdapter extends ArrayAdapter<Viajes> {
         String cast = Float.toString(viajes[position].getPrecio());
         String cast2 = Integer.toString(viajes[position].getId());
 
-        tvId.setText(cast2);
+       tvId.setText(cast2);
         tvPrecio.setText(cast);
         tvOrigen.setText(viajes[position].getOrigen());
         tvDestino.setText(viajes[position].getDestino());
